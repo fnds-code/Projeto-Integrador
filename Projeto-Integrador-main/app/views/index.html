@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor & Clic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="cabecalho">
+
+    <nav class="navegacao">
+        <button class="botao-menu" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <a href="{{ url_for('main.home') }}" class="logo">Sabor & Clic</a>
+
+        <div class="link-navegacao">
+            <a href="{{ url_for('main.home') }}">inicio</a>
+            <a href="{{ url_for('main.spaces') }}">espacos</a>
+            <a href="{{ url_for('main.menu') }}">cardapio</a>
+            <a href="#" class="carrinho">
+                <span>carrinho</span>
+            </a>
+            <a href="#">Entrar / minha conta</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="principal">
+        <div class="principal-conteudo">
+            <h1>{{ title|default('A experiencia gastronomica que voce merece') }}</h1>
+            {% if message %}<p>{{ message }}</p>{% endif %}
+
+            <a href="{{ url_for('main.menu') }}" class="botao">Ver cardapio</a>
+        </div>
+    </section>
+
+    <div class="linha-dourada"></div>
+
+    <section class="destaques">
+        <h2>Destaques</h2>
+
+        <div class="cards">
+            {% for highlight in highlights %}
+            <article class="card">
+
+                <div class="imagem-card">
+                    <img src="..." alt="Nome do espaço">
+                </div>
+                <div class="conteudo-card">
+                    <h3>{{ highlight.name }}</h3>
+                    <p>{{ highlight.description }}</p>
+                    <span class="preco">{{ highlight.price }}</span>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="como-funciona">
+        <h2>Como funciona</h2>
+            <div class="passos">
+                <div class="passo">
+                    <span>01</span>
+                    <h3>escolha</h3>
+                    <p>Encontre o espaço que deseja</p>
+                </div>
+
+                <div class="passo">
+                    <span>02</span>
+                    <h3>peça</h3>
+                    <p>adicione o item escolhido ao carrinho e finalize o pedido</p>
+                </div>
+
+                <div class="passo">
+                    <span>03</span>
+                    <h3>acompanhe</h3>
+                    <p>acompanhe o status de processamento do pedido</p>
+                </div>
+            </div>
+    </section>
+
+</main>
+
+<footer class="rodape">
+    <div class="logo">
+        Sabor & Clic
+    </div>
+    <p>2026 Sabor & Clic</p>
+</footer>
+    
+</body>
+</html>

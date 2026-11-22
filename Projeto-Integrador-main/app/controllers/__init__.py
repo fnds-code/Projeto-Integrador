@@ -1,1 +1,0 @@
-from app.controllers.pratos_controller import pratos_bp
